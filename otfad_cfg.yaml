@@ -1,0 +1,31 @@
+# Global I/O
+otfad_key: 
+key_scramble: 
+key_scramble_align: 
+input_image: 
+output_file: 
+
+# Boot image partitions I/O
+boot_image_part1:
+  image_offset: 
+  size: 
+  image_enc_key: 
+  counter: 
+
+boot_image_part2:
+  image_offset: 
+  size: 
+  image_enc_key: 
+  counter: 
+
+boot_image_part3:
+  image_offset: 
+  size: 
+  image_enc_key: 
+  counter: 
+
+boot_image_part4:
+  image_offset: 
+  size: 
+  image_enc_key: 
+  counter: 
