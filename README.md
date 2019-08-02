@@ -12,6 +12,7 @@
 
 ### Prerequisites:
 ---
+- xxd
 - OpenSSL
 - Python
 - Pyyaml
@@ -37,14 +38,14 @@ command.
 1. ***Create OTFAD key:***
 
 - Using OpenSSL
-  - ```openssl rand 16 -hex -out otfad_key```
+  - ```openssl rand -hex 16 | xxd -r -p > otfad_key```
 
 2. ***Create Image encryption key, Counter, Key Scramble:***
 
 - Using OpenSSL
-  - ```openssl rand 16 -hex -out enc_key```
-  - ```openssl rand 8 -hex -out ctr```
-  - ```openssl rand 4 -hex -out key_scramble```
+  - ```openssl rand -hex 16 | xxd -r -p > enc_key```
+  - ```openssl rand -hex 8 | xxd -r -p > ctr```
+  - ```openssl rand -hex 4 | xxd -r -p > key_scramble```
 
 3. ***Fill the otfad_cfg.yaml file with proper infomation:***
 
@@ -150,6 +151,8 @@ KEY SCRAMBLE ALIGN[0]: 0x00001200
 
 Using u-boot fuse utility, fuses can be burned as follows:
 
+***NOTE: Certain Fuses in MX7ULP are in ECC mode, thus a fuse word can be programmed only once.***
+
 - Burn the OTFAD key eFuse
   - ```fuse prog 29 0 0xXXXXXXXX 0xXXXXXXXX 0xXXXXXXXX 0xXXXXXXXX```
 
@@ -165,8 +168,6 @@ Using u-boot fuse utility, fuses can be burned as follows:
 - Enable OTFAD
   - ```fuse prog 29 4 0x00000020```
 
-***NOTE: Certain Fuses in MX7ULP are in ECC mode, thus a fuse word can be programmed only once.***
-
 6. ***Program QSPI image***
 
 QSPI image can be programmed in different ways. Here is an example using u-boot cli.
@@ -175,6 +176,10 @@ QSPI image can be programmed in different ways. Here is an example using u-boot 
   - ```fatload mmc 0:1 0x67900000 otfad.bin```
 
 - Program QSPI using u-boot cli
+
+***NOTE: After enabling OTFAD, if you are unable to probe QSPI, then disable OTFAD via software
+using ```mw 0x410A5C00 0xc0000068``` command and re-try.***
+
   - ```sf probe```
   - ```sf erase 0 0x10000```
   - ```sf write 0x67900000 0 0x10000```
