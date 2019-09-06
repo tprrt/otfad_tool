@@ -1,3 +1,9 @@
+#
+# Copyright 2019 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+#
+
 # Makefile for encrypt_image tool 
 
 CC = gcc

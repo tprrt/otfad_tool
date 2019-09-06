@@ -1,3 +1,9 @@
+/*
+ * Copyright 2019 NXP
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #include "compute_crc32.h"
 
 uint32_t compute_crc32(unsigned char *in, uint32_t size)

@@ -1,3 +1,9 @@
+/*
+ * Copyright 2019 NXP
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #ifndef KEY_WRAP_H
 
 #include <stdint.h>

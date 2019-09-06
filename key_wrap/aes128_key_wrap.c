@@ -1,3 +1,9 @@
+/*
+ * Copyright 2019 NXP
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #include "aes128_key_wrap.h"
 
 void handle_cipher_err(void)

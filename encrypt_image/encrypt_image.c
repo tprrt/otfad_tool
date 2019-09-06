@@ -1,3 +1,9 @@
+/*
+ * Copyright 2019 NXP
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #include "encrypt_image.h"
 
 /*

@@ -1,3 +1,9 @@
+/*
+ * Copyright 2019 NXP
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #include "key_wrap.h"
 #include "compute_crc32.h"
 #include "aes128_key_wrap.h"
