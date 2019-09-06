@@ -186,8 +186,6 @@ def generate_keyblob(otfad_key, part1, part):
 		try:
 			subprocess.check_call([KEY_WRAP_EXEC, \
 					"-i", otfad_key, \
-					# "-r", part.enc_key, \
-					# "-a", part.enc_key, \
 					"-k", part.enc_key, \
 					"-c", part.ctr, \
 					"-s", hex(part.srt_addr), \
@@ -205,8 +203,6 @@ def generate_keyblob(otfad_key, part1, part):
 		try:
 			subprocess.check_call([KEY_WRAP_EXEC, \
 					"-i", otfad_key, \
-					# "-r", part1.enc_key, \
-					# "-a", part1.enc_key, \
 					"-k", part1.enc_key, \
 					"-c", part1.ctr, \
 					"-s", hex(part1.srt_addr), \
@@ -262,11 +258,11 @@ def evaluate_boot_part_length(part1, part2, part3, part4):
 	If image offset + size of subsequent boot image partition is equal to
 	previous boot image partition, then reduce 1 byte (avoid overlap)
 	'''
-	if (part2.en ==1 and (part1.offset + part1.size == part2.offset)):
+	if (part2.en == 1 and (part1.offset + part1.size == part2.offset)):
 		part1.end_addr_kb = part1.end_addr_kb - 1;
-	if (part3.en ==1 and (part2.offset + part2.size == part3.offset)):
+	if (part3.en == 1 and (part2.offset + part2.size == part3.offset)):
 		part2.end_addr_kb = part2.end_addr_kb - 1;
-	if (part4.en ==1 and (part3.offset + part3.size == part4.offset)):
+	if (part4.en == 1 and (part3.offset + part3.size == part4.offset)):
 		part3.end_addr_kb = part3.end_addr_kb - 1;
 	pass
 
@@ -434,9 +430,9 @@ def parse_boot_img_parts(img_part, part_num):
 
 	if (check_min_param(img_offset, size, enc_key, ctr, part_num) == True):
 		image_part_en = 1
-		return img_offset, size, enc_key, ctr, image_part_en
+		return (img_offset, size, enc_key, ctr, image_part_en)
 	else:
-		return 0, 0, None, None, image_part_en
+		return (0, 0, None, None, image_part_en)
 	pass
 
 #

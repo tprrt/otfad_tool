@@ -116,8 +116,8 @@ static unsigned char *alloc_buffer(FILE *fp, char *input_file, int check_size)
  *
  * @Outputs : The usage info will be printed out on console window.
  */
-void print_usage(void) {
-
+void print_usage(void)
+{
 	int i = 0;
 	printf("OTFAD: Key scrambler tool\n"
 		"Usage:\n"
@@ -160,8 +160,7 @@ void handle_cli(int argc, char **argv)
 	/* Start from the first command-line option */
 	optind = 0;
 	/* Handle command line options*/
-	do
-	{
+	do {
 		next_opt = getopt_long(argc, argv, short_opt, long_opt, NULL);
 		switch (next_opt)
 		{
@@ -231,8 +230,7 @@ int main (int argc, char **argv)
 		/* Start from the first command-line option */
 		optind = 0;
 		/* Perform actions according to command-line option */
-		do
-		{
+		do {
 			next_opt = getopt_long(argc, argv, short_opt, long_opt, NULL);
 			switch (next_opt)
 			{

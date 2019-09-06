@@ -53,7 +53,8 @@ const struct option long_opt[] =
 };
 
 /* Option descriptions */
-const char* opt_desc[] = {
+const char* opt_desc[] =
+{
 	"Input OTFAD key (128-bit)",
 	"Input Scrambled key (32-bit)",
 	"Input Key Align (8-bit)",
@@ -65,12 +66,14 @@ const char* opt_desc[] = {
 unsigned char *do_aes128_key_wrap(unsigned char *, unsigned char *);
 
 /* OTFAD Key to be burned in Fuse */
-static const unsigned char test_otfad_key[OTFAD_KEY_SIZE] = {
+static const unsigned char test_otfad_key[OTFAD_KEY_SIZE] =
+{
 	0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
 	0x88, 0x99, 0xaa, 0xbb, 0xcc, 0xdd, 0xee, 0xff
 };
 
-static const unsigned char test_key_scramble[KEY_SCRAMBLE_SIZE] = {
+static const unsigned char test_key_scramble[KEY_SCRAMBLE_SIZE] =
+{
 	0x11, 0x11, 0x11, 0x11
 };
 

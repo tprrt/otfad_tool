@@ -166,7 +166,6 @@ static int get_file_size(FILE **fp, char *input_file)
  */
 static unsigned char *alloc_buffer(FILE *fp, char *input_file, int check_size)
 {
-	// int ret = 0;
 	int file_size = 0;
 	unsigned char *buff = NULL;
 	size_t result = 0;
@@ -244,8 +243,7 @@ void handle_cl_opt(int argc, char **argv)
 	/* Start from the first command-line option */
 	optind = 0;
 	/* Handle command line options*/
-	do
-	{
+	do {
 		next_opt = getopt_long(argc, argv, short_opt, long_opt, NULL);
 		switch (next_opt)
 		{
@@ -326,8 +324,7 @@ int main (int argc, char **argv)
 	/* Start from the first command-line option */
 	optind = 0;
 	/* Perform actions according to command-line option */
-	do
-	{
+	do {
 		next_opt = getopt_long(argc, argv, short_opt, long_opt, NULL);
 		switch (next_opt)
 		{
@@ -388,8 +385,7 @@ int main (int argc, char **argv)
 	/* Start from the first command-line option */
 	optind = 0;
 	/* Perform actions according to command-line option */
-	do
-	{
+	do {
 		next_opt = getopt_long(argc, argv, short_opt, long_opt, NULL);
 		switch (next_opt)
 		{
@@ -470,7 +466,7 @@ int main (int argc, char **argv)
 	printf("\n");
 #endif
 
-	/* Choose whether to use test counter or input counter value*/
+	/* Choose whether to use test counter or input counter value */
 	if(ctr_buf == NULL) {
 		counter = (unsigned char *)test_ctr;
 		printf("Using Test Couter as input\n");

@@ -152,8 +152,7 @@ void handle_cli(int argc, char **argv)
         /* Start from the first command-line option */
         optind = 0;
         /* Handle command line options*/
-        do
-        {
+        do {
                 next_opt = getopt_long(argc, argv, short_opt, long_opt, NULL);
                 switch (next_opt)
                 {
@@ -230,8 +229,7 @@ int main (int argc, char **argv)
                 /* Start from the first command-line option */
                 optind = 0;
                 /* Perform actions according to command-line option */
-                do
-                {
+                do {
                         next_opt = getopt_long(argc, argv, short_opt, long_opt, NULL);
                         switch (next_opt)
                         {
@@ -332,7 +330,7 @@ int main (int argc, char **argv)
         }
 
         /*
-         *  For MX7D:
+         *  For MX7ULP:
          *  1. Post swap needed, given otfad_io will do the bytes swap within every
          *     64bits wrapped data before send them to aes engine.
          *  2. otp_key[127:0] should be byte reversed compared with KEK string.

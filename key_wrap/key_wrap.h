@@ -71,7 +71,8 @@ const struct option long_opt[] =
 };
 
 /* Option descriptions */
-const char* opt_desc[] = {
+const char* opt_desc[] =
+{
         "Input OTFAD key (128-bit)",
         "Input Image Encryption Key (128-bit)",
         "Input counter (64-bit)",
@@ -86,7 +87,8 @@ const char* opt_desc[] = {
 unsigned char *do_aes128_key_wrap(unsigned char *, unsigned char *);
 
 /* OTFAD Key to be burned in Fuse */
-static const unsigned char test_otfad_key[OTFAD_KEY_SIZE] = {
+static const unsigned char test_otfad_key[OTFAD_KEY_SIZE] =
+{
         0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
         0x88, 0x99, 0xaa, 0xbb, 0xcc, 0xdd, 0xee, 0xff
 };
@@ -96,7 +98,8 @@ static unsigned char iv[IV_SIZE] = {
         0xa6, 0xa6, 0xa6, 0xa6, 0xa6, 0xa6, 0xa6, 0xa6
 };
 
-static const unsigned char test_pt[MAX_PT_SIZE] = {
+static const unsigned char test_pt[MAX_PT_SIZE] =
+{
         0x00, 0x01, 0x02, 0x03, // key_w0
         0x04, 0x05, 0x06, 0x07, // key_w1
         0x08, 0x09, 0x0a, 0x0b, // key_w2

@@ -18,15 +18,15 @@ A typical input image looks like below (with offsets):
 
 ```text
 +------------------------------+   <-- 0x0
-|                              |
 |         --Padding--          |
-|                              |
 |------------------------------|   <-- 0x400
 |       QSPI Configuration     |
 |------------------------------|   <-- 0x600
 |         --Padding--          |
 |------------------------------|   <-- 0x1000
+|                              |
 |      Plaintext Boot Image    |
+|                              |
 +------------------------------+
 ```
 
@@ -35,15 +35,15 @@ one IEK:
 
 ```text
 +------------------------------+   <-- 0x0
-|                              |
 |         --Padding--          |
-|                              |
 |------------------------------|   <-- 0x400
 |       QSPI Configuration     |
 |------------------------------|   <-- 0x600
 |         --Padding--          |
 |------------------------------|   <-- 0x1000
+|                              |
 |      Encrypted Boot Image    |
+|                              |
 +------------------------------+
 ```
 
@@ -78,7 +78,7 @@ Options:
 ## Examples:
 ---
 ```text
-./encrypt_image --input-image ulp-m4_signed.bin --enc-key key --counter ctr --start-address 0xC0001000 --end-address 0xC0008000 --output ulp-m4_signed.bin_no_header
-./encrypt_image -i ulp-m4_signed.bin -k key -c ctr -s 0xC0001000 -e 0xC0008000 -o ulp-m4_signed.bin_no_header
+./encrypt_image --input-image ulp-m4.bin --enc-key key --counter ctr --start-address 0xC0001000 --end-address 0xC0008000 --output ulp-m4.bin_no_header
+./encrypt_image -i ulp-m4.bin -k key -c ctr -s 0xC0001000 -e 0xC0008000 -o ulp-m4.bin_no_header
 
 ```

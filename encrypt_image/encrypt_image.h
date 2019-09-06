@@ -57,7 +57,8 @@ const struct option long_opt[] =
 };
 
 /* Option descriptions */
-const char* opt_desc[] = {
+const char* opt_desc[] =
+{
 	"Input image to be decrypted",
 	"Input image encryption key (128-bit)",
 	"Input counter (64 bit)",
@@ -74,14 +75,16 @@ const char* opt_desc[] = {
 
 uint8_t qspi_base_addr[4] = "\xC0\x00\x00\x00";
 
-static const unsigned char test_key[16] = {
+static const unsigned char test_key[16] =
+{
 	0x00, 0x01, 0x02, 0x03, // key_w0
 	0x04, 0x05, 0x06, 0x07, // key_w1
 	0x08, 0x09, 0x0a, 0x0b, // key_w2
 	0x0c, 0x0d, 0x0e, 0x0f, // key_w3
 };
 
-static unsigned char test_ctr[16] = {
+static unsigned char test_ctr[16] =
+{
 	0x01, 0x23, 0x45, 0x67, // ctr_w0
 	0x89, 0xab, 0xcd, 0xef, // ctr_w1
 	0x88, 0x88, 0x88, 0x88, // XOR(ctr_w0, ctr_w1)

@@ -24,7 +24,7 @@
 ---
 
 The Key scrambler, Key wrap and Encrypt Image tools can be build, with or
-without DEBUG enabled, individually or all tools can be build using make
+without DEBUG enabled, individually, or all tools can be build using make
 command.
 
 - DEBUG not enabled
@@ -104,22 +104,22 @@ Printing Key Scramble and Key Scramble Align...
 Burn Key Scramble as follows:
 KEY SCRAMBLE[0]: 0x12345678
 Burn Key Scramble Align as follows:
-KEY SCRAMBLE ALIGN[0]: 0x00001200
+KEY SCRAMBLE ALIGN[0]: 0x00001100
 ```
 
 #### Input image:
 
 ```text
 +------------------------------+   <-- 0x0
-|                              |
 |         --Padding--          |
-|                              |
 |------------------------------|   <-- 0x400
 |       QSPI Configuration     |
 |------------------------------|   <-- 0x600
 |         --Padding--          |
 |------------------------------|   <-- 0x1000
+|                              |
 |      Plaintext Boot Image    |
+|                              |
 +------------------------------+
 ```
 
@@ -141,7 +141,9 @@ KEY SCRAMBLE ALIGN[0]: 0x00001200
 |------------------------------|   <-- 0x600
 |         --Padding--          |
 |------------------------------|   <-- 0x1000
+|                              |
 |      Encrypted Boot Image    |
+|                              |
 +------------------------------+
 ```
 
