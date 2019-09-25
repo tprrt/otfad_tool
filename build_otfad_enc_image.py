@@ -308,27 +308,31 @@ def check_min_param(param1, param2, param3, param4, part_num):
 	pass
 
 #
-# Check if total size of boot image partitions is not more than size of input
+# Check if input image is of 128 bit block size and if total size of boot image partitions is not more than size of input
 # image
 #
 def validate_input_image_size(file_name, part1, part2, part3, part4):
 	'''
-	Check if total size of boot image partitions is not more than size of input
+	Check if input image is of 128 bit block size and if total size of boot image partitions is not more than size of input
 	image
 	'''
 	statinfo = os.stat(file_name)
 
+	if (0 != (statinfo.st_size%16)):
+		print (RED + "Error: Input image must be 128-bit aligned" + RESET)
+		sys.exit(1)
+
 	if (part4.en == 1 and (part4.offset + part4.size > statinfo.st_size)):
-		print ("Error : Boot image partition 4: Image offset and Size not aligned")
+		print (RED + "Error : Boot image partition 4: Image offset and Size not aligned" + RESET)
 		sys.exit(1)
 	elif (part3.en == 1 and (part3.offset + part3.size > statinfo.st_size)):
-		print ("Error : Boot image partition 3: Image offset and Size not aligned")
+		print (RED + "Error : Boot image partition 3: Image offset and Size not aligned" + RESET)
 		sys.exit(1)
 	elif (part2.en == 1 and (part2.offset + part2.size > statinfo.st_size)):
-		print ("Error : Boot image partition 2: Image offset and Size not aligned")
+		print (RED + "Error : Boot image partition 2: Image offset and Size not aligned" + RESET)
 		sys.exit(1)
 	elif (part1.en == 1 and (part1.offset + part1.size > statinfo.st_size)):
-		print ("Error : Boot image partition 1: Image offset and Size not aligned")
+		print (RED + "Error : Boot image partition 1: Image offset and Size not aligned" + RESET)
 		sys.exit(1)
 	pass
 
@@ -344,13 +348,13 @@ def validate_img_offset_size(part1, part2, part3, part4):
 	is not overlap)
 	'''
 	if (part2.en == 1 and (part1.offset + part1.size > part2.offset)):
-		print ("Error : Boot image partition 2: Image offset not aligned")
+		print (RED + "Error : Boot image partition 2: Image offset not aligned" + RESET)
 		sys.exit(1)
 	if (part3.en == 1 and (part2.offset + part2.size > part3.offset)):
-		print ("Error : Boot image partition 3: Image offset not aligned")
+		print (RED + "Error : Boot image partition 3: Image offset not aligned" + RESET)
 		sys.exit(1)
 	if (part4.en == 1 and (part3.offset + part3.size > part4.offset)):
-		print ("Error : Boot image partition 4: Image offset not aligned")
+		print (RED + "Error : Boot image partition 4: Image offset not aligned" + RESET)
 		sys.exit(1)
 	pass
 
