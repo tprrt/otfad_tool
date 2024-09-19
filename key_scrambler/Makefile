@@ -6,29 +6,44 @@
 
 # Makefile for key_scrambler tool
 
-CC = gcc
+# Compiler settings
+CC ?= gcc
 
-COPTS = -g -Wall -Werror
-CFLAGS = -I.
+# Cross-compiler settings
+CROSS_COMPILE ?=
+TARGET_CC = $(CROSS_COMPILE)$(CC)
 
+# Compiler and linker flags
+COPTS ?= -g -Wall -Werror
+CFLAGS ?= -I.
+LDFLAGS ?=
+
+# Source files and dependencies
 DEPS = key_scrambler.h
 SRCS = key_scrambler.c
+OBJS = $(SRCS:.c=.o)
 
+# Phony targets
 .PHONY: all clean
 
+# Debug flag
 ifeq ($(DEBUG), 1)
 CFLAGS += -D DEBUG
 endif
 
+# Build target
 all: key_scrambler
 
+# Object files
 %.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(COPTS) $(CFLAGS)
+	$(TARGET_CC) -c -o $@ $< $(COPTS) $(CFLAGS)
 
-key_scrambler: key_scrambler.c
+# Final executable
+key_scrambler: $(OBJS)
 	@echo "Building key_scrambler tool.."
-	$(CC) $(COPTS) $(CFLAGS) -o $@ $(SRCS) $(CRYPTO_LIBS)
+	$(TARGET_CC) $(COPTS) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
 	@echo "done"
 
+# Clean
 clean:
 	rm -rvf key_scrambler *.o
